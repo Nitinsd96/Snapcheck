@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Nitin {
+    public static void main(String[] args) {
+        //String st= "haveaniceday";
+        //String st="feedthedog";
+        String st="chillout";
+        //String st="if man was meant to stay on the ground god would have given us roots";
+        st=st.replaceAll("\\s","");
+        System.out.println("Input String "+st);
+        int n=(int)Math.sqrt(st.length())+1;
+        List<String> al=new ArrayList<>();
+        char[] ch=st.toCharArray();
+        int ptr=0;
+        for(int i=0;i<=ch.length;i++){
+            ptr++;
+            if(ptr==n+1){
+                ptr=1;
+                al.add(st.substring(i-n,i));
+            }
+        }
+        if(ptr!=1){
+            al.add(st.substring(st.length()-ptr+1));
+        }
+        System.out.println(al);
+        List<String> res=new ArrayList<>();
+        for(int i=0;i<al.size()+1;i++){
+            res.add("");
+        }
+        for(int i=0;i<al.size();i++){
+            char[] c=al.get(i).toCharArray();
+            for(int j=0;j<c.length;j++){
+                res.set(j,res.get(j)+c[j]);
+            }
+        }
+        System.out.println(res);
+    }
+}
